@@ -52,6 +52,7 @@
             var regName = /FieldName: ([^\n]*)/,
                 regType = /FieldType: ([A-Za-z\t .]+)/,
                 regFlags = /FieldFlags: ([0-9\t .]+)/,
+                regStateOptions = /FieldStateOption: ([^\n]*)/,
                 fieldArray = [],
                 currField = {};
 
@@ -71,17 +72,25 @@
 
                     if(field.match(regType)){
                         currField['fieldType'] = field.match(regType)[1].trim() || '';
-                    }else {
+                    } else {
                         currField['fieldType'] = '';
                     }
 
                     if(field.match(regFlags)){
                         currField['fieldFlags'] = field.match(regFlags)[1].trim()|| '';
-                    }else{
+                    } else{
                         currField['fieldFlags'] = '';
                     }
-
-                    currField['fieldValue'] = '';
+                    if(field.match(regStateOptions)){
+                        // find other FieldStateOption s
+                        while(field.match(regStateOptions)) {
+                            if(!_.has(currField,"fieldStateOptions"))
+                                currField['fieldStateOptions'] = [];
+                            currField['fieldStateOptions'].push(field.match(regStateOptions)[1].trim());
+                            // remove the found one, so regex goes to the next
+                            field = field.replace("FieldStateOption: " + field.match(regStateOptions)[1], "")
+                        }
+                    }
 
                     fieldArray.push(currField);
                 });

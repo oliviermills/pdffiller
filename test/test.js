@@ -101,25 +101,29 @@ describe('pdfFiller Tests', function(){
                 "fieldFlags": "0",
                 "title" : "football",
                 "fieldValue": "",
-                "fieldType": "Button"
+                "fieldType": "Button",
+                "fieldStateOptions": [ "Off", "Yes"]
             },
             {
                 "fieldFlags": "0",
                 "title" : "baseball",
                 "fieldValue": "",
-                "fieldType": "Button"
+                "fieldType": "Button",
+                "fieldStateOptions": [ "Off", "Yes"]
             },
             {
                 "fieldFlags": "0",
                 "title" : "basketball",
                 "fieldValue": "",
-                "fieldType": "Button"
+                "fieldType": "Button",
+                "fieldStateOptions": [ "Off", "Yes"]
             },
             {
                 "fieldFlags": "0",
                 "title" : "nascar",
                 "fieldValue": "",
-                "fieldType": "Button"
+                "fieldType": "Button",
+                "fieldStateOptions": [ "Off", "Yes"]
             },
             {
                 "fieldFlags": "0",
